@@ -19,7 +19,7 @@
 
 ```bash
 # リポジトリのクローン
-git clone [リポジトリURL]
+git clone https://github.com/timeless-residents/handson-expo.git
 
 # 依存関係のインストール
 npm install

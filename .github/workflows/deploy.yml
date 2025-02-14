@@ -21,10 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set Git user 
+      - name: Set Git user
         run: |
-          git config --global user.email "git@github.com"
-          git config --global user.name "github-actions"
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your Name"
 
       - name: Build project for web (Expo)
         run: npm run deploy
@@ -34,4 +34,4 @@ jobs:
         with:
           folder: web-build
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }} 
