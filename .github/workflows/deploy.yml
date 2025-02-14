@@ -21,17 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Pre Deploy
+      - name: Build project for web (Expo)
         run: npx expo export -p web
-
-      - name: Commit and Push Feed Data
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }} 
+          token: ${{ secrets.GITHUB_TOKEN }}
