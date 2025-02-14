@@ -45,9 +45,9 @@ npm run web
 
 ## デプロイ
 
-このプロジェクトはGitHub Pagesを使用してWebバージョンをデプロイします。
+このプロジェクトはGitHub Pagesを使用してWebバージョンをデプロイします。デプロイは手動（ローカル）とGitHub Actionsの2つの方法で実行できます。
 
-### デプロイの準備
+### ローカルからのデプロイ
 
 1. GitHubにログインしていることを確認してください
 2. リポジトリに対する書き込み権限があることを確認してください
@@ -56,14 +56,30 @@ npm run web
    git config --global user.name "あなたのGitHubユーザー名"
    git config --global user.email "あなたのメールアドレス"
    ```
+4. 以下のコマンドを実行してデプロイします：
+   ```bash
+   # Webビルドの作成とデプロイ
+   npm run predeploy
+   npm run deploy
+   ```
 
-### デプロイの実行
+### GitHub Actionsによる自動デプロイ
 
-```bash
-# Webビルドの作成とデプロイ
-npm run predeploy
-npm run deploy
-```
+このプロジェクトはGitHub Actionsを使用して自動デプロイを行います。
+
+1. リポジトリの`Settings` > `Pages`で、デプロイ元を`GitHub Actions`に設定してください
+2. mainブランチにプッシュすると、自動的にデプロイが実行されます
+3. デプロイの進行状況は`Actions`タブで確認できます
+
+ワークフローの主な処理内容：
+- Node.js 18.xのセットアップ
+- 依存関係のインストール
+- Expoプロジェクトのビルド
+- `web-build`ディレクトリの内容を`gh-pages`ブランチにデプロイ
+
+注意：GitHub Actionsでのデプロイには、以下の設定が必要です：
+- リポジトリの`Settings` > `Actions` > `General`で、Workflowsの権限が有効になっていることを確認
+- `GITHUB_TOKEN`のWrite権限が付与されていることを確認（`gh-pages`ブランチへの書き込みに必要）
 
 デプロイされたアプリケーションは以下のURLで確認できます：
 https://timeless-residents.github.io/handson-expo
