@@ -16,9 +16,22 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x' 
+          node-version: '18.x'
 
       - name: Install dependencies
         run: npm install
-      - name: Build project for web (Expo)**
+
+      - name: Set Git user 
+        run: |
+          git config --global user.email "git@github.com"
+          git config --global user.name "github-actions"
+
+      - name: Build project for web (Expo)
         run: npm run deploy
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: web-build
+          branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
