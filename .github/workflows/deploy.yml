@@ -28,7 +28,7 @@ jobs:
       - name: Build project for web (Expo)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
+        run: npx gh-pages --nojekyll -d dist -r https://$GITHUB_TOKEN@github.com/timeless-residents/handson-expo.git
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
