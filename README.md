@@ -47,6 +47,18 @@ npm run web
 
 このプロジェクトはGitHub Pagesを使用してWebバージョンをデプロイします。
 
+### デプロイの準備
+
+1. GitHubにログインしていることを確認してください
+2. リポジトリに対する書き込み権限があることを確認してください
+3. Git認証情報が正しく設定されていることを確認してください：
+   ```bash
+   git config --global user.name "あなたのGitHubユーザー名"
+   git config --global user.email "あなたのメールアドレス"
+   ```
+
+### デプロイの実行
+
 ```bash
 # Webビルドの作成とデプロイ
 npm run predeploy
